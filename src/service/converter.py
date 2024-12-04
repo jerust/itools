@@ -16,7 +16,6 @@ def word_to_pdf(filepath: str):
 
 def convert_word_to_pdf_go_version(filepath: Path) -> str:
     pdf = filepath.with_suffix(".pdf")
-    ilogger.info(f"{filepath}")
     try:
         subprocess.run(
             [
