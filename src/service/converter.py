@@ -4,7 +4,7 @@ from pathlib import Path
 from config import word_to_pdf_image
 from config import pdf_to_html_image
 from config import word_to_pdf_means
-from src.instance.logger import ilogger
+from src.logger.logger import ilogger
 
 
 def word_to_pdf(filepath: str):
@@ -16,6 +16,7 @@ def word_to_pdf(filepath: str):
 
 def convert_word_to_pdf_go_version(filepath: Path) -> str:
     pdf = filepath.with_suffix(".pdf")
+    ilogger.info(f"{filepath}")
     try:
         subprocess.run(
             [

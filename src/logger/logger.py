@@ -7,6 +7,7 @@ from types import FrameType
 from loguru import logger
 
 
+# 定义拦截器
 class InterceptHandler(logging.Handler):
     def emit(self, record: logging.LogRecord):
         try:
@@ -53,9 +54,6 @@ class Logger:
             diagnose=True,  # 诊断
             enqueue=True,  # 异步写入
             rotation="00:00",  # 每日更新时间
-            # rotation="5kb",  # 切割，设置文件大小，rotation="12:00"，rotation="1 week"
-            # filter="my_module"  # 过滤模块
-            # compression="zip"   # 文件压缩
         )
 
         self.init()
@@ -67,3 +65,6 @@ class Logger:
         for logger_name in LOGGER_NAMES:
             logging_logger = logging.getLogger(logger_name)
             logging_logger.handlers = [InterceptHandler()]
+
+
+ilogger = logger

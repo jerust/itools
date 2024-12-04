@@ -7,7 +7,7 @@ from pandas import DataFrame, Series
 from langchain_community.document_loaders import Docx2txtLoader
 from langchain_community.document_loaders import PDFMinerLoader
 
-from src.instance.logger import ilogger
+from src.logger.logger import ilogger
 
 
 def docx_reader(filepath: str) -> str:

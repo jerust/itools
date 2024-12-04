@@ -2,7 +2,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from config import host, port
+from src.logger.logger import Logger
+from config import host, port, log_config
 from src.route.converter import router as converter
 from src.route.embedding import router as embedding
 from src.route.reranker import router as reranker
@@ -34,4 +35,7 @@ if __name__ == "__main__":
 >> POST /itools/reranker
 >> POST /itools/splitter
 """)
-    uvicorn.Server(uvicorn.Config("itools:app", host=host, port=port)).run()
+    Logger()
+    uvicorn.Server(
+        uvicorn.Config("itools:app", host=host, port=port, log_config=log_config)
+    ).run()
