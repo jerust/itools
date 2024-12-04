@@ -22,12 +22,13 @@ semantics = f"{public}/huggingface/paraphrase-multilingual-MiniLM-L12-v2"
 # word转pdf方式
 word_to_pdf_means = "go"
 
-word_to_pdf_image = "http://127.0.0.1:3000/forms/libreoffice/convert"
+# word转pdf路由
+word_to_pdf_route = "http://127.0.0.1:3000/forms/libreoffice/convert"
 
 # pdf转html镜像
 pdf_to_html_image = "pdf2html:latest"
 
-# 日志配置
+# 应用程序日志
 log_config = {
     "version": 1,
     "disable_existing_loggers": False,

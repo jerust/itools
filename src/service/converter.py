@@ -1,7 +1,7 @@
 import subprocess
 from pathlib import Path
 
-from config import word_to_pdf_image
+from config import word_to_pdf_route
 from config import pdf_to_html_image
 from config import word_to_pdf_means
 from src.logger.logger import ilogger
@@ -22,7 +22,7 @@ def convert_word_to_pdf_go_version(filepath: Path) -> str:
                 "curl",
                 "-X",
                 "POST",
-                word_to_pdf_image,
+                word_to_pdf_route,
                 "-F",
                 f"files=@{filepath}",
                 "-o",
