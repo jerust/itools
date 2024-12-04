@@ -9,7 +9,6 @@ from src.route.reranker import router as reranker
 from src.route.splitter import router as splitter
 from src.route.office import router as office
 
-
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
