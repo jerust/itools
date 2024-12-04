@@ -10,20 +10,22 @@ from langchain_community.document_loaders import PDFMinerLoader
 from src.logger.logger import ilogger
 
 
-def docx_reader(filepath: str) -> str:
+def docx_reader(filepath: str):
     try:
-        return Docx2txtLoader(filepath).load()[0].page_content
+        content = Docx2txtLoader(filepath).load()[0].page_content
+        return (content, None)
     except Exception as error:
         ilogger.error(f"Failed to read docx file: {error}")
-        return ""
+        return ("", error)
 
 
-def pdf_reader(filepath: str) -> str:
+def pdf_reader(filepath: str):
     try:
-        return PDFMinerLoader(filepath).load()[0].page_content
+        content = PDFMinerLoader(filepath).load()[0].page_content
+        return (content, None)
     except Exception as error:
         ilogger.error(f"Failed to read pdf file: {error}")
-        return ""
+        return ("", error)
 
 
 def excel_reader(
@@ -39,8 +41,8 @@ def excel_reader(
     Returns:
         Dict[str, str]: 每个工作表的数据作为字符串存储在字典中
     """
-    data = dict()
     try:
+        content = dict()
         sheets = (
             {sheet: pd.read_excel(filepath, sheet_name=sheet)}
             if sheet
@@ -48,18 +50,18 @@ def excel_reader(
         )
         for sheet, df in sheets.items():
             if isinstance(df, DataFrame):
-                data[sheet] = format_dataframe(df, readmode)
+                content[sheet] = format_dataframe(df, readmode)
             elif isinstance(df, Series):
                 df = df.to_frame().T
-                data[sheet] = format_dataframe(df, readmode)
+                content[sheet] = format_dataframe(df, readmode)
             else:
                 ilogger.error(
                     f"Unsupported type returned for sheet '{sheet}': {type(df)}"
                 )
-        return data
+        return (json.dumps(content, ensure_ascii=False), None)
     except Exception as error:
         ilogger.error(f"Failed to read excel file: {error}")
-        return data
+        return ("", error)
 
 
 def format_dataframe(dataframe: DataFrame, readmode: str) -> str:

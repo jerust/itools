@@ -1,5 +1,3 @@
-from typing import Dict
-
 from pydantic import BaseModel
 
 
@@ -12,4 +10,4 @@ class PdfReaderRespond(BaseModel):
 
 
 class ExcelReaderRespond(BaseModel):
-    content: Dict[str, str]
+    content: str
