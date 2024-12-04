@@ -25,15 +25,17 @@ app.include_router(splitter)
 app.include_router(office)
 
 if __name__ == "__main__":
-    print("""🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰
->> POST /itools/converter/word-to-pdf
->> POST /itools/converter/pdf-to-html
->> POST /itools/office/excel-reader
->> POST /itools/office/docx-reader
->> POST /itools/office/pdf-reader
->> POST /itools/embedding
->> POST /itools/reranker
->> POST /itools/splitter
+    print("""
+🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰
+🥰>> POST /itools/converter/word-to-pdf🥰
+🥰>> POST /itools/converter/pdf-to-html🥰
+🥰>> POST /itools/office/excel-reader  🥰
+🥰>> POST /itools/office/docx-reader   🥰
+🥰>> POST /itools/office/pdf-reader    🥰
+🥰>> POST /itools/embedding            🥰
+🥰>> POST /itools/reranker             🥰
+🥰>> POST /itools/splitter             🥰
+🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰
 """)
     Logger()
     uvicorn.Server(
