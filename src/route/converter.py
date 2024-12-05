@@ -1,10 +1,10 @@
 from fastapi import APIRouter
 
+from src.service import converter as service
 from src.dto.request.converter import WordToPdfRequest
 from src.dto.request.converter import PdfToHtmlRequest
 from src.dto.response.converter import WordToPdfRespond
 from src.dto.response.converter import PdfToHtmlRespond
-from src.service import converter as service
 
 router = APIRouter()
 

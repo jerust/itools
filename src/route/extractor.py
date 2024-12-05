@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 
-from src.service import office as service
+from src.service import extractor as service
 from src.dto.request.office import DocxReaderRequest
 from src.dto.response.office import DocxReaderRespond
 from src.dto.request.office import PdfReaderRequest
@@ -11,7 +11,7 @@ from src.dto.response.office import ExcelReaderRespond
 router = APIRouter()
 
 
-@router.post(path="/itools/office/docx-reader")
+@router.post(path="/itools/extractor/docx-reader")
 async def docx_reader(body: DocxReaderRequest):
     content, error = service.docx_reader(body.filepath)
     if error:
@@ -19,7 +19,7 @@ async def docx_reader(body: DocxReaderRequest):
     return DocxReaderRespond(content=content)
 
 
-@router.post(path="/itools/office/pdf-reader")
+@router.post(path="/itools/extractor/pdfx-reader")
 async def pdf_reader(body: PdfReaderRequest):
     content, error = service.pdf_reader(body.filepath)
     if error:
@@ -27,7 +27,7 @@ async def pdf_reader(body: PdfReaderRequest):
     return PdfReaderRespond(content=content)
 
 
-@router.post(path="/itools/office/excel-reader")
+@router.post(path="/itools/extractor/xlsx-reader")
 async def excel_reader(body: ExcelReaderRequest):
     content, error = service.excel_reader(body.filepath, body.readmode, body.sheet)
     if error:

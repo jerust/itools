@@ -6,9 +6,9 @@ from src.logger.logger import Logger
 from config import host, port, log_config
 from src.route.converter import router as converter
 from src.route.embedding import router as embedding
-from src.route.reranker import router as reranker
-from src.route.splitter import router as splitter
-from src.route.office import router as office
+from src.route.extractor import router as extractor
+from src.route.reranking import router as reranking
+from src.route.splitting import router as splitting
 
 app = FastAPI()
 app.add_middleware(
@@ -20,21 +20,21 @@ app.add_middleware(
 )
 app.include_router(converter)
 app.include_router(embedding)
-app.include_router(reranker)
-app.include_router(splitter)
-app.include_router(office)
+app.include_router(extractor)
+app.include_router(reranking)
+app.include_router(splitting)
 
 if __name__ == "__main__":
     print("""
 🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰
 🥰>> POST /itools/converter/word-to-pdf🥰
 🥰>> POST /itools/converter/pdf-to-html🥰
-🥰>> POST /itools/office/excel-reader  🥰
-🥰>> POST /itools/office/docx-reader   🥰
-🥰>> POST /itools/office/pdf-reader    🥰
+🥰>> POST /itools/extractor/xlsx-reader🥰
+🥰>> POST /itools/extractor/docx-reader🥰
+🥰>> POST /itools/extractor/pdfx-reader🥰
 🥰>> POST /itools/embedding            🥰
-🥰>> POST /itools/reranker             🥰
-🥰>> POST /itools/splitter             🥰
+🥰>> POST /itools/reranking            🥰
+🥰>> POST /itools/splitting            🥰
 🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰
 """)
     Logger()
