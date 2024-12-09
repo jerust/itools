@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException
 
 from src.service import extractor as service
-from src.dto.request.office import DocxReaderRequest
-from src.dto.response.office import DocxReaderRespond
-from src.dto.request.office import PdfReaderRequest
-from src.dto.response.office import PdfReaderRespond
-from src.dto.request.office import ExcelReaderRequest
-from src.dto.response.office import ExcelReaderRespond
+from src.dto.request.extractor import DocxReaderRequest
+from src.dto.response.extractor import DocxReaderRespond
+from src.dto.request.extractor import PdfReaderRequest
+from src.dto.response.extractor import PdfReaderRespond
+from src.dto.request.extractor import ExcelReaderRequest
+from src.dto.response.extractor import ExcelReaderRespond
 
 router = APIRouter()
 
