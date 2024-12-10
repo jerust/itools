@@ -15,7 +15,7 @@ def docx_reader(filepath: str):
         content = Docx2txtLoader(filepath).load()[0].page_content
         return (content, None)
     except Exception as error:
-        ilogger.error(f"Failed to read docx file: {error}")
+        ilogger.error(f"Failed to read docx file of: {filepath}, {error}")
         return ("", error)
 
 
@@ -24,7 +24,7 @@ def pdf_reader(filepath: str):
         content = PDFMinerLoader(filepath).load()[0].page_content
         return (content, None)
     except Exception as error:
-        ilogger.error(f"Failed to read pdf file: {error}")
+        ilogger.error(f"Failed to read pdfx file of: {filepath}, {error}")
         return ("", error)
 
 
@@ -60,7 +60,7 @@ def excel_reader(
                 )
         return (json.dumps(content, ensure_ascii=False), None)
     except Exception as error:
-        ilogger.error(f"Failed to read excel file: {error}")
+        ilogger.error(f"Failed to read xlsx file of: {filepath}, {error}")
         return ("", error)
 
 
